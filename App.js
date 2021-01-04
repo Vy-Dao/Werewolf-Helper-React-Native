@@ -15,6 +15,7 @@ import {
 //Testing each screen
 import HomeScreen from "./src/screen/Home/index.js";
 import ExplorePage from "./src/screen/Explore/index.js";
+
 const App: () => React$Node = () => {
   return (
     <>
