@@ -2,10 +2,12 @@ import React from 'react';
 import {
     View,
     Text,
-    FlatList
+    FlatList,
+    Pressable,
+    ScrollView
 } from 'react-native';
 import styles from './styles';
-
+import Fontisto from "react-native-vector-icons/Fontisto"
 //Import Data
 import feed from '../../../assets/data/feed';
 import RolesCards from '../../components/RolesCards/index';
@@ -24,32 +26,38 @@ const ExplorePage = (props) => {
     });
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.title}>Search</Text>
-            <View>
-            <Text>Village Team</Text>
-            <FlatList
-                data = {villageTeam}
-                renderItem = {({ item }) => <RolesCards indivCard={item} />}
-                keyExtractor={(item) => item.role}
-                horizontal
-            /> 
-             <Text>Werewolf Team</Text>
-            <FlatList
-                data = {werewolfteam}
-                renderItem = {({ item }) => <RolesCards indivCard={item} />}
-                keyExtractor={(item) => item.role}
-                horizontal
-            /> 
-             <Text>Village Team</Text>
-            <FlatList
-                data = {specialteam}
-                renderItem = {({ item }) => <RolesCards indivCard={item} />}
-                keyExtractor={(item) => item.role}
-                horizontal
-            /> 
-            </View>
-        </View>
+        <ScrollView style={styles.container}>
+           <View styles={styles.viewContainer}>
+               <Text style={styles.tabTitle}>Explore</Text>
+                <Text style={styles.title}>Village Team</Text>
+                <View style={styles.flatlist}>
+                    <FlatList
+                        data = {villageTeam}
+                        renderItem = {({ item }) => <RolesCards indivCard={item} />}
+                        keyExtractor={(item) => item.role}
+                        horizontal
+                    /> 
+                </View>
+                <Text style={styles.title}>Werewolf Team</Text>
+                <View style={styles.flatlist}>
+                    <FlatList
+                        data = {werewolfteam}
+                        renderItem = {({ item }) => <RolesCards indivCard={item} />}
+                        keyExtractor={(item) => item.role}
+                        horizontal
+                    /> 
+                </View>
+                <Text style={styles.title}>Special Team</Text>
+                <View style={styles.flatlist}>
+                    <FlatList
+                        data = {specialteam}
+                        renderItem = {({ item }) => <RolesCards indivCard={item} />}
+                        keyExtractor={(item) => item.role}
+                        horizontal
+                    /> 
+                </View>
+           </View>
+        </ScrollView>
     );
 };
 
